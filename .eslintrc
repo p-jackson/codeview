@@ -7,6 +7,8 @@
     "react/jsx-quotes": 0,
     "jsx-quotes": [2, "prefer-double"],
     "comma-dangle": 0,
-    "semi": [2, "never"]
+    "semi": [2, "never"],
+    "curly": 0,
+    "brace-style": [2, "stroustrup"]
   }
 }

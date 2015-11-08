@@ -4,5 +4,7 @@
   "validateQuoteMarks": null,
   "requireTrailingComma": null,
   "requireSemicolons": null,
-  "disallowSemicolons": true
+  "disallowSemicolons": true,
+  "requirePaddingNewLinesBeforeLineComments": null,
+  "disallowKeywordsOnNewLine": null
 }
