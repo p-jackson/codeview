@@ -1,17 +1,15 @@
 
 
 export function addEventListener(node, event, listener) {
-  if (node.addEventListener) {
+  if (node.addEventListener)
     node.addEventListener(event, listener, false)
-  } else {
+  else
     node.attachEvent('on' + event, listener)
-  }
 }
 
 export function removeEventListener(node, event, listener) {
-  if (node.removeEventListener) {
+  if (node.removeEventListener)
     node.removeEventListener(event, listener, false)
-  } else {
+  else
     node.detachEvent('on' + event, listener)
-  }
 }

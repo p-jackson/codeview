@@ -22,11 +22,18 @@ server.use(express.static(path.join(__dirname, 'public')))
 // -----------------------------------------------------------------------------
 server.use('/api/content', require('./api/content'))
 
+async function getDefaultRepoPath() {
+  return 'no-repos'
+}
+
 //
 // Register server-side rendering middleware
 // -----------------------------------------------------------------------------
 server.get('*', async (req, res, next) => {
   try {
+    if (!req.path || req.path === '/')
+      return res.redirect(await getDefaultRepoPath())
+
     let statusCode = 200
     const data = { title: '', description: '', css: '', body: '' }
     const css = []
@@ -42,9 +49,10 @@ server.get('*', async (req, res, next) => {
       data.css = css.join('')
     })
 
-    const html = ReactDOM.renderToString(<Html {...data} />)
+    const html = ReactDOM.renderToStaticMarkup(<Html {...data} />)
     res.status(statusCode).send('<!doctype html>\n' + html)
-  } catch (err) {
+  }
+  catch (err) {
     next(err)
   }
 })

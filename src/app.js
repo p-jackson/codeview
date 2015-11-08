@@ -33,7 +33,8 @@ function render(state) {
       // Restore the scroll position if it was saved into the state
       if (state.scrollY !== undefined) {
         window.scrollTo(state.scrollX, state.scrollY)
-      } else {
+      }
+      else {
         window.scrollTo(0, 0)
       }
 
@@ -74,7 +75,8 @@ function run() {
     if (supportPageOffset) {
       currentLocation.state.scrollX = window.pageXOffset
       currentLocation.state.scrollY = window.pageYOffset
-    } else {
+    }
+    else {
       currentLocation.state.scrollX = isCSS1Compat ?
         document.documentElement.scrollLeft : document.body.scrollLeft
       currentLocation.state.scrollY = isCSS1Compat ?
@@ -92,6 +94,7 @@ function run() {
 // Run the application when both DOM is ready and page content is loaded
 if (['complete', 'loaded', 'interactive'].includes(document.readyState) && document.body) {
   run()
-} else {
+}
+else {
   document.addEventListener('DOMContentLoaded', run, false)
 }

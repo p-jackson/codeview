@@ -1,7 +1,7 @@
 
 
 import React, { PropTypes, Component } from 'react'
-import styles from './content-page.css'
+import styles from './content-page.less'
 import withStyles from '../../decorators/with-styles'
 
 @withStyles(styles)
@@ -11,6 +11,7 @@ class ContentPage extends Component {
     path: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     title: PropTypes.string,
+    centre: PropTypes.bool
   }
 
   static contextTypes = {
@@ -18,13 +19,11 @@ class ContentPage extends Component {
   }
 
   render() {
+    const cls = 'contentPage' + (this.props.centre ? ' isCentred' : '')
     this.context.onSetTitle(this.props.title)
     return (
-      <div className="ContentPage">
-        <div className="ContentPage-container">
-          {
-            this.props.path === '/' ? null : <h1>{this.props.title}</h1>
-          }
+      <div className={cls}>
+        <div className="contentPage-container">
           <div dangerouslySetInnerHTML={{__html: this.props.content || ''}} />
         </div>
       </div>

@@ -21,12 +21,10 @@ const HttpClient = {
       .accept('application/json')
       .end((err, res) => {
         if (err) {
-          if (err.status === 404) {
-            resolve(null)
-          } else {
-            reject(err)
-          }
-        } else {
+          if (err.status === 404) resolve(null)
+          else reject(err)
+        }
+        else {
           resolve(res.body)
         }
       })

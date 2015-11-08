@@ -21,27 +21,27 @@ function withStyles(...styles) {
         if (canUseDOM) {
           el = this.styleId && document.getElementById(this.styleId)
           if (el) {
-            if ('textContent' in el) {
+            if ('textContent' in el)
               el.textContent = css
-            } else {
+            else
               el.styleSheet.cssText = css
-            }
-          } else {
+          }
+          else {
             this.styleId = `dynamic-css-${count++}`
             el = document.createElement('style')
             el.setAttribute('id', this.styleId)
             el.setAttribute('type', 'text/css')
 
-            if ('textContent' in el) {
+            if ('textContent' in el)
               el.textContent = css
-            } else {
+            else
               el.styleSheet.cssText = css
-            }
 
             document.getElementsByTagName('head')[0].appendChild(el)
             this.refCount++
           }
-        } else {
+        }
+        else {
           this.context.onInsertCss(css)
         }
       }.bind(this)
@@ -52,7 +52,8 @@ function withStyles(...styles) {
         if (canUseDOM) {
           invariant(style.use, `The style-loader must be configured with reference-counted API.`)
           style.use()
-        } else {
+        }
+        else {
           this.context.onInsertCss(style.toString())
         }
       }

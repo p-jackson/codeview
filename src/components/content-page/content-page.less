@@ -1,0 +1,42 @@
+@import '../variables.less';
+
+.contentPage {
+  &.isCentred {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+
+    h1, h2, h3, h4, h5, h6 {
+      text-align: center;
+    }
+
+    .contentPage-container {
+      max-width: 500px;
+    }
+  }
+
+  &-container {
+    margin: 0 auto;
+    padding: 0 0 40px;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  li {
+    flex-basis: 150px;
+    border: 1px solid @gray;
+    font-size: 100%;
+    font-weight: 600;
+    color: @grayDark;
+    white-space: nowrap;
+  }
+}

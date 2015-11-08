@@ -27,19 +27,19 @@ router.get('/', async (req, res, next) => {
       return
     }
 
-    let fileName = join(CONTENT_DIR, (path === '/' ? '/index' : path) + '.jade')
-    if (!await fs.exists(fileName)) {
+    let fileName = join(CONTENT_DIR, (path === '/' ? '/index' : path) + '.md')
+    if (!await fs.exists(fileName))
       fileName = join(CONTENT_DIR, path + '/index.md')
-    }
 
-    if (!await fs.exists(fileName)) {
+    if (!await fs.exists(fileName))
       res.status(404).send({error: `The page '${path}' is not found.`})
-    } else {
+    else {
       const source = await fs.readFile(fileName, { encoding: 'utf8' })
       const content = parseMarkdown(path, source)
       res.status(200).send(content)
     }
-  } catch (err) {
+  }
+  catch (err) {
     next(err)
   }
 })

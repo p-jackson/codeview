@@ -8,11 +8,10 @@ const exists = filename => new Promise(resolve => {
 
 const readFile = filename => new Promise((resolve, reject) => {
   fs.readFile(filename, 'utf8', (err, data) => {
-    if (err) {
+    if (err)
       reject(err)
-    } else {
+    else
       resolve(data)
-    }
   })
 })
 

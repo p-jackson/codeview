@@ -1,0 +1,46 @@
+@import '../variables.less';
+
+@radius: 2px;
+@height: 60px;
+
+.repoBadge {
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  background: @offWhite;
+  border-radius: @radius;
+  box-shadow: @littleShadow;
+  transition: box-shadow 300ms ease;
+  transition: box-shadow @animationSwiftOut;
+
+  &:hover {
+    box-shadow: @littleShadowLifted;
+  }
+
+  &-icon {
+    width: @height;
+    height: @height;
+    position: relative;
+    background: @grayLighter;
+    border-top-left-radius: @radius;
+    border-bottom-left-radius: @radius;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  &-ids {
+    height: @height;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &-repoName {
+    padding-left: 0.5em;
+    font-weight: 600;
+    color: @grayDark;
+  }
+  &-author {
+    padding-left: 0.5em;
+    color: @gray;
+  }
+}
